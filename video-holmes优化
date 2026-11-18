@@ -1,0 +1,70 @@
+# 20251229
+
+1.加cinepile数据训练
+
+26kvideo-r1(v2）：
+
+|  | qwen-2.5-omni | 200 | 400 | 600 | 800 | 1000 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| chatgpt v2 - video-holmes | 34.68 | 37.34 | 38.21 | 38.10 | 38.05 | 39.68 |
+| chatgpt v2 - worldsense | 42.7 |  |  |  |  | 43.9 |
+
+26kvideo-r1+cinepile训练（v4.5）:
+
+|  | qwen-2.5-omni | 200 | 400 | 600 | 800 | 1000 | 1200 | 1400 | 1600 | 1800 | 1940 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| chatgpt v2 - video-holmes | 34.68 | 37.29 | 41.59 | 42.46 | 41.64 | 43.33 | 43.39 | 43.49 | **43.71** | 43.60 | 43.33 |
+| chatgpt v2 - worldsense | 42.7 |  |  |  |  |  |  |  | 43.4 |  |  |
+
+
+
+数据配比对比
+
+|  | 25.5k选择题+0.5k数值题目（v2） | 2.6k数值题目+23.4k选择题+1.5kvideo-homle（v4.2) | 13k选择题+13k数值题(v4.1) | 26kvideo-r1+cinepile（4.5） |
+| --- | --- | --- | --- | --- |
+| format reward | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213289428328?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213298375437?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213296341803?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213296656467?contentType=1&amp;compress=@143w&amp;isNewContent=false>) |
+| MultiModalAccuracy | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213296812930?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213298534388?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213294528101?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213291756025?contentType=1&amp;isNewContent=false>) |
+| length: | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213298216916?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213286720333?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213288789071?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213287197061?contentType=1&amp;compress=@481w&amp;isNewContent=false>) |
+| loss;reward | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213293894338?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213297131332?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213293573710?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213287836087?contentType=1&amp;compress=@316w&amp;isNewContent=false>) |
+| videohomlse-v2 | 39.68 |  |  | 43.33 |
+
+
+
+2.full训练（调小学习率，v3.2）
+
+|  | qwen-2.5-omni | 100steps |
+| :--- | :--- | :--- |
+| chatgpt v2 - video-holmes | 34.68 | 38.98 |
+| worlsense | 42.7 | 44.4 |
+
+100步以及后面的轨迹没有思考过程（或者思考过程很简略）
+
+
+
+|  | lora（v2） | full（v3.1） | full（v3.2） |
+| --- | --- | --- | --- |
+| format reward | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213289733304?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213299499250?contentType=1&amp;isNewContent=false>) | ​![](<https://km.sankuai.com/api/file/cdn/2742110625/213297738887?contentType=1&amp;compress=@164w&amp;isNewContent=false>) |
+| MultiModalAccuracy | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213289415651?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213299969968?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213297595128?contentType=1&amp;compress=@168w&amp;isNewContent=false>) |
+| length | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213298861675?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213296485904?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213292929512?contentType=1&amp;compress=@500w&amp;isNewContent=false>) |
+| loss;reward | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213296331135?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213293563028?contentType=1&amp;isNewContent=false>)![](<https://km.sankuai.com/api/file/cdn/2742110625/213289733309?contentType=1&amp;isNewContent=false>) | ![](<https://km.sankuai.com/api/file/cdn/2742110625/213289095844?contentType=1&amp;compress=@369w&amp;isNewContent=false>) |
+| videohomlse-v2 | 39.68（1000） |  | 38.98（100steps） |
+
+
+
+3.代码帧率修改
+
+测评中：
+
+|  | qwen-2.5-omni-orig | qwen-omni<br>帧率改变 |
+| --- | --- | --- |
+| chatgpt v2 - video-holmes | 34.68 | 36.25 |
+
+
+
+4.epsilon\_high=0.28
+
+v4.2 200-steps
+
+| 评分标准 | epsilon\_high=0.2  | epsilon\_high=0.28  |
+| --- | --- | --- |
+| v2 | 37.34 | 38.37 |
