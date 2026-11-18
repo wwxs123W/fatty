@@ -1,0 +1,18 @@
+git config --global user.name "wwxs123W"
+
+git config --global user.email "1397282352@qq.com"
+
+检查是否配置成功：git config --global --list
+
+生成ssh密钥
+
+ssh-keygen -t ed25519 -C "1397282352@qq.com"
+
+获取公钥内容：cat ~/.ssh/id_ed25519.pub
+
+将公钥添加到github
+
+检查是否成功连接：ssh -T git@github.com
+
+使用：git clone git@github.com:wwxs123W/rl-sr.git
+
